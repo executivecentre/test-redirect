@@ -137,7 +137,7 @@ for i in "${!strings[@]}"; do
 
     echo "# $i. ${stringArray[0]} -> ${stringArray[1]}"
     echo "# $i. ${stringArray[0]}" >> "$filename"
-    addr=$(curl -sL -D - "${stringArray[0]}" -o /dev/null | grep -i location: | sed -r -e 's/location: (.+)$/\1/i' )
+    addr=$(curl -sL -D - "${stringArray[0]}" -o /dev/null | grep -i location: | sed -E -e 's/location: (.+)$/\1/i' )
     expect=${stringArray[1]}
     echo "Location:" >> "$filename"
     echo "$addr" >> "$filename"
