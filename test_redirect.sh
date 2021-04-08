@@ -121,6 +121,8 @@ strings=(
     "http://www.executivecentre.com.cn/location/hk_central_hong_kong_club_building                 https://www.executivecentre.com.cn/office-space/hk-central-hong-kong-club-building/"
     "http://www.executivecentre.com.cn/location/seoul_seoul_finance_centre-seoul                   https://www.executivecentre.com.cn/office-space/seoul-seoul-finance-centre-seoul/"
     "https://www.executivecentre.com/en-jp/blog-article/our-gender-equality-statement-2/           https://www.executivecentre.com/en-jp/blog-article/our-gender-equality-statement/"
+    "https://www.executivecentre.com/en-hk/office-space/prestige-technostar-2/                     https://www.executivecentre.com/en-hk/office-space/prestige-technostar/"
+    "https://www.executivecentre.com/en-jp/blog-article/celebrating-member-success-stories-creating-bespoke-workspace-som-2/    https://www.executivecentre.com/en-jp/blog-article/celebrating-member-success-stories-creating-bespoke-workspace-som/"
 )
 
 
