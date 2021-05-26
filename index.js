@@ -96,7 +96,7 @@ program.action(async (_filename, options) => {
 
         if (trial >= 20) result.timeout = true;
 
-        console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Timeout' : 'Failed'} (${result.hops.length} Hops)\n`);
+        console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Timeout' : 'Failed'} (${result.hops.length} Hops)`);
         resultList.push(result);
     }
     const dateString = getDateForFileName(new Date());
