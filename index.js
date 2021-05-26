@@ -1,3 +1,4 @@
+//@ts-check
 const { Command } = require('commander');
 const fetch = require('node-fetch');
 const { writeToNewFile, getDateForFileName, readFile } = require('./fileIO');
@@ -22,6 +23,7 @@ program
     .version('1.0.0')
     .arguments('[filename]')
     .option('--fetch', 'output fetch and redirect logs')
+    .option('-f, --fail-report', 'Generate failure reports')
     // .option('-s, --small', 'small pizza size')
     // .option('-p, --pizza-type <type>', 'flavour of pizza');
     ;
@@ -94,9 +96,10 @@ program.action(async (_filename, options) => {
 
         if (trial >= 20) result.timeout = true;
 
-        console.log(`${result.index}.  ${result.pass ? 'OK' : result.timeout ? 'Timeout' : 'Failed'} (${result.hops.length} Hops)\n`);
+        console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Timeout' : 'Failed'} (${result.hops.length} Hops)\n`);
         resultList.push(result);
     }
+    const dateString = getDateForFileName(new Date());
 
     const passed = resultList.filter(result => result.pass).length;
     const oneHops = resultList.filter(result => result.pass && result.hops.length <= 1).length;
@@ -105,41 +108,27 @@ program.action(async (_filename, options) => {
     const resultString = `${name}\n` +
         `File name: ${filename}\n` +
         `Descriptions: ${descriptions}\n` +
-        `Date: ${new Date().toISOString()}\n\n` +
+        `Date: ${dateString}\n\n` +
         `Passed: ${passed} / ${total} (${Math.floor(passed / total * 100)}%)\n` +
         `Failed: ${total - passed}\n` +
         `1-Hop-Pass: ${oneHops} / ${passed} (${Math.floor(oneHops / passed * 100)}%)\n` +
         `\n` +
-        (resultList.map(line => {
-            const {
-                index,
-                input,
-                expect,
-                notes,
-                expectStrictHostName,
-                expectStrictQueryString,
-                hops,
-                pass,
-                timeout,
-            } = line;
-            const flags = [
-                expectStrictHostName ? 'expectStrictHostName' : '',
-                expectStrictQueryString ? 'expectStrictQueryString' : '',
-            ].filter(line => line);
-            return [
-                `${('' + (index) + '.').padEnd(6, ' ')}  ${input}`,
-                hops.map((hop, i) => `      > ${hop}`).join('\n'),
-                `Expect: ${expect}`,
-                [
-                    (notes === '' ? '' : `Notes: ${notes}`),
-                    'Flags: ' + JSON.stringify(flags)
-                ].filter(a => a).join(', '),
-                `${pass ? 'OK' : timeout ? 'Timeout' : 'Failed'} (${hops.length} Hops)`,
-            ].join('\n');
-        })).join('\n\n');
+        generateReport(resultList);
 
-    const dateString = getDateForFileName(new Date());
+    const failureList = resultList.filter(result => !result.pass);
+    const failureString = `${name}\n` +
+        `File name: ${filename}\n` +
+        `Descriptions: ${descriptions}\n` +
+        `Date: ${dateString}\n\n` +
+        `Passed: ${passed} / ${total} (${Math.floor(passed / total * 100)}%)\n` +
+        `Failed: ${total - passed}\n` +
+        `1-Hop-Pass: ${oneHops} / ${passed} (${Math.floor(oneHops / passed * 100)}%)\n` +
+        `\n` +
+        generateReport(failureList);
+
     writeToNewFile(`./output/redirect_result_${dateString}.txt`, resultString);
+    writeToNewFile(`./output/redirect_failure_${dateString}.txt`, failureString);
+    writeToNewFile(`./output/redirect_failure_${dateString}.json`, JSON.stringify(failureList, null, 4));
     // console.log('');
     // console.log('');
     // console.log('');
@@ -147,9 +136,40 @@ program.action(async (_filename, options) => {
     // console.log('');
     // console.log(resultString);
     // console.log('');
-    // console.log('');
+    console.log('Done');
 })
     ;
 
 program.parse(process.argv);
 
+
+
+function generateReport(resultList) {
+    return (resultList.map(line => {
+        const {
+            index,
+            input,
+            expect,
+            notes,
+            expectStrictHostName,
+            expectStrictQueryString,
+            hops,
+            pass,
+            timeout,
+        } = line;
+        const flags = [
+            expectStrictHostName ? 'expectStrictHostName' : '',
+            expectStrictQueryString ? 'expectStrictQueryString' : '',
+        ].filter(line => line);
+        return [
+            `${('' + (index) + '.').padEnd(6, ' ')}  ${input}`,
+            hops.map((hop, i) => `      > ${hop}`).join('\n'),
+            `Expect: ${expect}`,
+            [
+                (notes === '' ? '' : `Notes: ${notes}`),
+                'Flags: ' + JSON.stringify(flags)
+            ].filter(a => a).join(', '),
+            `${pass ? 'OK' : timeout ? 'Timeout' : 'Failed'} (${hops.length} Hops)`,
+        ].join('\n');
+    })).join('\n\n');
+}

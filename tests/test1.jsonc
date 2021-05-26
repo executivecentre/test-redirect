@@ -162,7 +162,7 @@
         },
         {
             "input": "https://www.executivecentre.com/en-au/sydney-coworking-spaces/",
-            "expect": "https://www.executivecentre.com/en-au/locations/sydney/coworking-spaces-in-sydney/ "
+            "expect": "https://www.executivecentre.com/en-au/locations/sydney/coworking-spaces-in-sydney/"
         },
         {
             "input": "https://www.executivecentre.com/en-au/sydney-meeting-rooms-conference-centres/",
@@ -178,7 +178,7 @@
         },
         {
             "input": "https://www.executivecentre.com/en-au/perth-coworking-spaces/",
-            "expect": "https://www.executivecentre.com/en-au/locations/perth/coworking-spaces-in-perth/ "
+            "expect": "https://www.executivecentre.com/en-au/locations/perth/coworking-spaces-in-perth/"
         },
         {
             "input": "https://www.executivecentre.com/en-au/perth-meeting-rooms-conference-centres/",
@@ -194,7 +194,7 @@
         },
         {
             "input": "https://www.executivecentre.com/en-au/melbourne-coworking-spaces/",
-            "expect": "https://www.executivecentre.com/en-au/locations/melbourne/coworking-spaces-in-melbourne/ "
+            "expect": "https://www.executivecentre.com/en-au/locations/melbourne/coworking-spaces-in-melbourne/"
         },
         {
             "input": "https://www.executivecentre.com/en-au/melbourne-meeting-rooms-conference-centres/",
@@ -210,7 +210,7 @@
         },
         {
             "input": "https://www.executivecentre.com/en-au/brisbane-coworking-spaces/",
-            "expect": "https://www.executivecentre.com/en-au/locations/brisbane/coworking-spaces-in-brisbane/ "
+            "expect": "https://www.executivecentre.com/en-au/locations/brisbane/coworking-spaces-in-brisbane/"
         },
         {
             "input": "https://www.executivecentre.com/en-au/brisbane-meeting-rooms-conference-centres/",
