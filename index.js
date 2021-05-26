@@ -19,18 +19,19 @@ function getChildSite(url) {
 
 
 program
-    .version('0.0.1')
+    .version('1.0.0')
     .arguments('[filename]')
     .option('--fetch', 'output fetch and redirect logs')
     // .option('-s, --small', 'small pizza size')
     // .option('-p, --pizza-type <type>', 'flavour of pizza');
     ;
 
-program.action(async (filename, options) => {
-    filename = filename || 'tests/test1.jsonc';
+program.action(async (_filename, options) => {
+    const filename = _filename || 'tests/test1.jsonc';
     console.log('Run test from %s', filename);
 
-    const testsString = (await readFile(filename)).replace(/(?<=\n)\s*\/\/.+?\n/g, '\n');
+    const testsRawString = await readFile(filename);
+    const testsString = testsRawString.replace(/\r\n/g, '\n').replace(/(?<=\n)\s*\/\/.+?\n/g, '\n');
 
     // console.log('testsString', testsString);
     const file = JSON.parse(testsString);
