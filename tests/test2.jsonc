@@ -1,0 +1,15 @@
+{
+    "name": "Test 2",
+    "descriptions": "Short version",
+    "tests": [
+        {
+            "input": "https://www.executivecentre.com/contact_us",
+            "expect": "https://www.executivecentre.com/contact-us/",
+            "notes": "Hi"
+        },
+        {
+            "input": "https://www.executivecentre.com/bespoke/",
+            "expect": "https://www.executivecentre.com/enterprise-solution/"
+        }
+    ]
+}

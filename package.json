@@ -1,0 +1,29 @@
+{
+  "name": "test-redirect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "export": "node export.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dickson-tec/test-redirect.git"
+  },
+  "author": "Dickson Chui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dickson-tec/test-redirect/issues"
+  },
+  "homepage": "https://github.com/dickson-tec/test-redirect#readme",
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.10"
+  },
+  "dependencies": {
+    "commander": "^7.2.0",
+    "shelljs": "^0.8.4",
+    "node-fetch": "^2.6.1"
+  }
+}

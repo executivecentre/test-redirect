@@ -1,0 +1,428 @@
+{
+    "name": "Test 1",
+    "descriptions": "",
+    "tests": [
+        // {
+        //     "input": "https://www.executivecentre.com/contact_us",
+        //     "expect": "https://www.executivecentre.com/contact-us/",
+        //     expectStrictHostName: true,
+        //     expectStrictQueryString: true,
+        // },
+        // {
+        //     "input": "%CHILD_SITE%/contact_us",
+        //     "expect": "%CHILD_SITE%/contact-us/",
+        // },
+        {
+            "input": "https://www.executivecentre.com/contact_us",
+            "expect": "https://www.executivecentre.com/contact-us/"
+        },
+        {
+            "input": "https://www.executivecentre.com/bespoke/",
+            "expect": "https://www.executivecentre.com/enterprise-solution/"
+        },
+        {
+            "input": "https://www.executivecentre.com/remote-workspace/",
+            "expect": "https://www.executivecentre.com/virtual-office/"
+        },
+        {
+            "input": "https://www.executivecentre.com/blog-article/celebrating-one-year-of-tec-community-2/",
+            "expect": "/blog-article/celebrating-one-year-of-tec-community/"
+        },
+        {
+            "input": "https://www.executivecentre.com/blog-article/tec-blog/",
+            "expect": "/blog-article/global-member-network-the-future-of-work/"
+        },
+        // {
+        //     "input": "https://www.executivecentre.com/city/*",
+        //     "expect": "https://www.executivecentre.com/locations/*",
+        // },
+        {
+            "input": "https://www.executivecentre.com/city/hong-kong",
+            "expect": "https://www.executivecentre.com/locations/hong-kong/"
+        },
+        {
+            "input": "https://www.executivecentre.com/city/sydney",
+            "expect": "https://www.executivecentre.com/locations/sydney/"
+        },
+        {
+            "input": "https://www.executivecentre.com/city/australia",
+            "expect": "https://www.executivecentre.com/locations/?market=australia"
+        },
+        // {
+        //     "input": "https://www.executivecentre.com/news/*",
+        //     "expect": "https://www.executivecentre.com/press-and-media/",
+        // },
+        {
+            "input": "https://www.executivecentre.com/news/the-executive-centre-expanding-in-china-market/",
+            "expect": "https://www.executivecentre.com/press-and-media/"
+        },
+        {
+            "input": "https://www.executivecentre.com/news/enterprise-solutions-by-the-executive-centre-new-video-series-announces-landmark-product-evolution/",
+            "expect": "https://www.executivecentre.com/press-and-media/"
+        },
+        // {
+        //     "input": "https://www.executivecentre.com/conference_centre/*",
+        //     "expect": "https://www.executivecentre.com/meeting-rooms-conference/",
+        // },
+        {
+            "input": "https://www.executivecentre.com/conference_centre/54d-eagle-street",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/"
+        },
+        // {
+        //     "input": "https://www.executivecentre.com/serviced_offices/*",
+        //     "expect": "https://www.executivecentre.com/private-office/",
+        // },
+        {
+            "input": "https://www.executivecentre.com/serviced_offices/hong-kong",
+            "expect": "https://www.executivecentre.com/private-office/"
+        },
+        // {
+        //     "input": "https://www.executivecentre.com/centre-page/*",
+        //     "expect": "https://www.executivecentre.com/office-space/*",
+        // },
+        {
+            "input": "https://www.executivecentre.com/centre-page/hk-central-nexxus-building",
+            "expect": "https://www.executivecentre.com/office-space/hk-central-nexxus-building/"
+        },
+        // {
+        //     "input": "/shared_offices/*",
+        //     "expect": "https://www.executivecentre.com/",
+        // },
+        {
+            "input": "https://www.executivecentre.com/shared_offices/virtual_offices/",
+            "expect": "https://www.executivecentre.com/virtual-office/"
+        },
+        {
+            "input": "https://www.executivecentre.com/shared_offices/call_handling/",
+            "expect": "https://www.executivecentre.com/virtual-office/"
+        },
+        {
+            "input": "https://www.executivecentre.com/shared_offices/whatever/",
+            "expect": "https://www.executivecentre.com/"
+        },
+        // {
+        //     "input": "https://www.executivecentre.com/id-id/*",
+        //     "expect": "https://www.executivecentre.com/en-id/*",
+        // },
+        {
+            "input": "https://www.executivecentre.com/id-id/",
+            "expect": "https://www.executivecentre.com/en-id/"
+        },
+        {
+            "input": "https://www.executivecentre.com/id-id/coworking/",
+            "expect": "https://www.executivecentre.com/en-id/coworking/"
+        },
+        {
+            "input": "https://www.executivecentre.com/about/terms_and_conditions",
+            "expect": "https://www.executivecentre.com/terms-and-conditions/"
+        },
+        {
+            "input": "https://www.executivecentre.com/about/privacy_policy",
+            "expect": "https://www.executivecentre.com/privacy-policy/"
+        },
+        {
+            "input": "https://www.executivecentre.com/serviced_offices",
+            "expect": "https://www.executivecentre.com/private-office/"
+        },
+        {
+            "input": "https://www.executivecentre.com/conference_centre",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/"
+        },
+        {
+            "input": "https://www.executivecentre.com/news",
+            "expect": "https://www.executivecentre.com/press-and-media/"
+        },
+        {
+            "input": "https://www.executivecentre.com/chauffeur",
+            "expect": "https://www.executivecentre.com/2017/02/10/tbr/"
+        },
+        {
+            "input": "https://www.executivecentre.com/company_formation",
+            "expect": "https://www.executivecentre.com/about-us/"
+        },
+        {
+            "input": "https://www.executivecentre.com/office-space/hk-quarry-bay-one-island-east-lv60/",
+            "expect": "/office-space/hk-quarry-bay-one-island-east/"
+        },
+        {
+            "input": "https://www.executivecentre.com/meeting-room/60a-one-island-east-l60/",
+            "expect": "/office-space/hk-quarry-bay-one-island-east/"
+        },
+        {
+            "input": "https://www.executivecentre.com/meeting-room/60b-one-island-east-l60/",
+            "expect": "/office-space/hk-quarry-bay-one-island-east/"
+        },
+        {
+            "input": "https://www.executivecentre.com/virtual_offices/",
+            "expect": "https://www.executivecentre.com/virtual-office/"
+        },
+        {
+            "input": "https://www.executivecentre.com/campaign",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/sydney-coworking-spaces/",
+            "expect": "https://www.executivecentre.com/en-au/locations/sydney/coworking-spaces-in-sydney/ "
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/sydney-meeting-rooms-conference-centres/",
+            "expect": "https://www.executivecentre.com/en-au/locations/sydney/meeting-conference-rooms-in-sydney/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/sydney-serviced-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/sydney/serviced-offices-in-sydney/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/sydney-virtual-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/sydney/virtual-offices-in-sydney/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/perth-coworking-spaces/",
+            "expect": "https://www.executivecentre.com/en-au/locations/perth/coworking-spaces-in-perth/ "
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/perth-meeting-rooms-conference-centres/",
+            "expect": "https://www.executivecentre.com/en-au/locations/perth/meeting-conference-rooms-in-perth/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/perth-serviced-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/perth/serviced-offices-in-perth/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/perth-virtual-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/perth/virtual-offices-in-perth/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/melbourne-coworking-spaces/",
+            "expect": "https://www.executivecentre.com/en-au/locations/melbourne/coworking-spaces-in-melbourne/ "
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/melbourne-meeting-rooms-conference-centres/",
+            "expect": "https://www.executivecentre.com/en-au/locations/melbourne/meeting-conference-rooms-in-melbourne/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/melbourne-serviced-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/melbourne/serviced-offices-in-melbourne/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/melbourne-virtual-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/melbourne/virtual-offices-in-melbourne/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/brisbane-coworking-spaces/",
+            "expect": "https://www.executivecentre.com/en-au/locations/brisbane/coworking-spaces-in-brisbane/ "
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/brisbane-meeting-rooms-conference-centres/",
+            "expect": "https://www.executivecentre.com/en-au/locations/brisbane/meeting-conference-rooms-in-brisbane/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/brisbane-serviced-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/brisbane/serviced-offices-in-brisbane/"
+        },
+        {
+            "input": "https://www.executivecentre.com/en-au/brisbane-virtual-offices/",
+            "expect": "https://www.executivecentre.com/en-au/locations/brisbane/virtual-offices-in-brisbane/"
+        },
+        {
+            "input": "https://www.executivecentre.com/?page_id=4679",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/?page_id=4712",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/?page_id=528",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/?page_id=4521",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/?page_id=4510",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/?page_id=4518",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/contact_us",
+            "expect": "https://www.executivecentre.com/contact-us/"
+        },
+        {
+            "input": "https://www.executivecentre.com?contact-us",
+            "expect": "https://www.executivecentre.com/contact-us/?contact-us"
+        },
+        {
+            "input": "https://www.executivecentre.com/?contact-us",
+            "expect": "https://www.executivecentre.com/contact-us/?contact-us"
+        },
+        {
+            "input": "https://www.executivecentre.com/corporate-responsibility",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/private-offices",
+            "expect": "https://www.executivecentre.com/private-office/"
+        },
+        {
+            "input": "https://www.executivecentre.com/shared_offices",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/business-services/",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/shared-workspaces/",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/exclusive-workspaces/",
+            "expect": "https://www.executivecentre.com/"
+        },
+        {
+            "input": "https://www.executivecentre.com/meetings-events/",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/"
+        },
+        {
+            "input": "https://www.executivecentre.com/event-venues-event-management/",
+            "expect": "https://www.executivecentre.com/event-space-venue/"
+        },
+        {
+            "input": "https://www.executivecentre.com/event-venues-management-services/",
+            "expect": "https://www.executivecentre.com/event-space-venue/"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/australia/",
+            "expect": "https://www.executivecentre.com/locations/?market=australia"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/china/",
+            "expect": "https://www.executivecentre.com/locations/?market=china"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/india/",
+            "expect": "https://www.executivecentre.com/locations/?market=india"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/indonesia/",
+            "expect": "https://www.executivecentre.com/locations/?market=indonesia"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/japan/",
+            "expect": "https://www.executivecentre.com/locations/?market=japan"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/philippines/",
+            "expect": "https://www.executivecentre.com/locations/?market=philippines"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/singapore/",
+            "expect": "https://www.executivecentre.com/locations/?market=singapore"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/south-korea/",
+            "expect": "https://www.executivecentre.com/locations/?market=south-korea"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/sri-lanka/",
+            "expect": "https://www.executivecentre.com/locations/?market=sri-lanka"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/uae/",
+            "expect": "https://www.executivecentre.com/locations/?market=uae"
+        },
+        {
+            "input": "https://www.executivecentre.com/locations/vietnam/",
+            "expect": "https://www.executivecentre.com/locations/?market=vietnam"
+        },
+        {
+            "input": "https://www.executivecentre.com/sitemap_index.xml",
+            "expect": "https://www.executivecentre.com/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com/tec_locations-sitemap.xml",
+            "expect": "https://www.executivecentre.com/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com/tec_building-sitemap.xml",
+            "expect": "https://www.executivecentre.com/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com/tec_blog_article-sitemap.xml",
+            "expect": "https://www.executivecentre.com/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com/tec_city_products-sitemap.xml",
+            "expect": "https://www.executivecentre.com/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com/page-sitemap.xml",
+            "expect": "https://www.executivecentre.com/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com/post-sitemap.xml",
+            "expect": "https://www.executivecentre.com/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com.cn/sitemap_index.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com.cn/tec_locations-sitemap.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com.cn/tec_building-sitemap.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com.cn/tec_blog_article-sitemap.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com.cn/tec_city_products-sitemap.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com.cn/page-sitemap.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.com.cn/post-sitemap.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.co.kr/sitemap_index.xml",
+            "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.co.kr/tec_locations-sitemap.xml",
+            "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.co.kr/tec_building-sitemap.xml",
+            "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.co.kr/tec_blog_article-sitemap.xml",
+            "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.co.kr/tec_city_products-sitemap.xml",
+            "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.co.kr/page-sitemap.xml",
+            "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        },
+        {
+            "input": "https://www.executivecentre.co.kr/post-sitemap.xml",
+            "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        }
+    ]
+}
