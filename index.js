@@ -8,7 +8,7 @@ const program = new Command();
 
 
 
-function waitForSeconds(ms) {
+function waitForMs(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -22,7 +22,7 @@ function getChildSite(url) {
 program
     .version('1.0.0')
     .arguments('[filename]')
-    .option('--fetch', 'output fetch and redirect logs')
+    .option('--log-fetch', 'output fetch and redirect logs')
     .option('-f, --fail-report', 'Generate failure reports')
     // .option('-s, --small', 'small pizza size')
     // .option('-p, --pizza-type <type>', 'flavour of pizza');
@@ -80,23 +80,24 @@ program.action(async (_filename, options) => {
             }
             result.pass = (testUrl === expectUrl);
 
-            if (options.fetch) console.log(`fetch ${url}`);
-            resp = await fetch(url, { redirect: 'manual' });
+            if (options.logFetch) console.log(`fetch ${url}`);
+            resp = await fetch(url, { method: 'HEAD', redirect: 'manual' });
 
             // console.log('resp.headers', resp.headers);
             url = resp.headers.get('location');
             if (url) {
-                if (options.fetch) console.log('redirected');
+                if (options.logFetch) console.log('redirected');
                 result.hops.push(url);
             } else {
                 url = '';
             }
-            await waitForSeconds(10);
+            await waitForMs(10);
         } while (url !== '' && trial < 20);
 
         if (trial >= 20) result.timeout = true;
 
-        console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Timeout' : 'Failed'} (${result.hops.length} Hops)`);
+        console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Failed timeout' : 'Failed'} (${result.hops.length} Hops)`);
+        if (options.logFetch) console.log('');
         resultList.push(result);
     }
     const dateString = getDateForFileName(new Date());
@@ -112,6 +113,7 @@ program.action(async (_filename, options) => {
         `Passed: ${passed} / ${total} (${Math.floor(passed / total * 100)}%)\n` +
         `Failed: ${total - passed}\n` +
         `1-Hop-Pass: ${oneHops} / ${passed} (${Math.floor(oneHops / passed * 100)}%)\n` +
+        `=======================================\n` +
         `\n` +
         generateReport(resultList);
 
@@ -123,19 +125,14 @@ program.action(async (_filename, options) => {
         `Passed: ${passed} / ${total} (${Math.floor(passed / total * 100)}%)\n` +
         `Failed: ${total - passed}\n` +
         `1-Hop-Pass: ${oneHops} / ${passed} (${Math.floor(oneHops / passed * 100)}%)\n` +
+        `=======================================\n` +
         `\n` +
         generateReport(failureList);
 
-    writeToNewFile(`./output/redirect_result_${dateString}.txt`, resultString);
-    writeToNewFile(`./output/redirect_failure_${dateString}.txt`, failureString);
-    writeToNewFile(`./output/redirect_failure_${dateString}.json`, JSON.stringify(failureList, null, 4));
-    // console.log('');
-    // console.log('');
-    // console.log('');
-    // console.log('');
-    // console.log('');
-    // console.log(resultString);
-    // console.log('');
+    await writeToNewFile(`./output/redirect_result_${dateString}.txt`, resultString);
+    if (options.failReport) writeToNewFile(`./output/redirect_failure_${dateString}.txt`, failureString);
+    if (options.failReport) writeToNewFile(`./output/redirect_failure_${dateString}.json`, JSON.stringify(failureList, null, 4));
+
     console.log('Done');
 })
     ;
@@ -169,7 +166,7 @@ function generateReport(resultList) {
                 (notes === '' ? '' : `Notes: ${notes}`),
                 'Flags: ' + JSON.stringify(flags)
             ].filter(a => a).join(', '),
-            `${pass ? 'OK' : timeout ? 'Timeout' : 'Failed'} (${hops.length} Hops)`,
+            `${pass ? 'OK' : timeout ? 'Failed timeout' : 'Failed'} (${hops.length} Hops)`,
         ].join('\n');
     })).join('\n\n');
 }
