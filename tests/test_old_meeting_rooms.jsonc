@@ -1,0 +1,51 @@
+{
+    "name": "Test old meeting rooms",
+    "descriptions": "WEB20-761 [M&E] Redirect Old Meeting Room Pages",
+    "tests": [
+        {
+            "notes": "WEB20-761 Old Meeting room page",
+            "input": "https://www.executivecentre.com/meeting-room/",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (sample)",
+            "input": "https://www.executivecentre.com/meeting-room/54a-eagle-street/",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (sample)",
+            "input": "http://www.executivecentre.com/meeting-room/12a-china-resources-building",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (cn sample)",
+            "input": "https://www.executivecentre.com.cn/meeting-room/54a-eagle-street",
+            "expect": "https://www.executivecentre.com.cn/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (cn sample)",
+            "input": "http://www.executivecentre.com.cn/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com.cn/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (en-jp sample)",
+            "input": "https://www.executivecentre.com/en-jp/meeting-room/54a-eagle-street/",
+            "expect": "https://www.executivecentre.com/en-jp/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (en-jp sample)",
+            "input": "http://www.executivecentre.com/en-jp/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com/en-jp/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (ja sample)",
+            "input": "http://www.executivecentre.com/ja-jp/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (sample)",
+            "input": "http://www.executivecentre.com/en-jp/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com/en-jp/meeting-rooms-conference/select-a-room/"
+        }
+    ]
+}

@@ -1,2 +1,12 @@
 #!/usr/bin/bash
-node ./index.js "$@"
+_term() { 
+  echo "Caught SIGTERM signal!" 
+  kill -TERM "$child" 2>/dev/null
+}
+
+trap _term SIGTERM
+
+node ./index.js "$@" &
+
+child=$!
+wait "$child"

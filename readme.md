@@ -1,21 +1,40 @@
 # Test-Redirect
 
+Nodejs utility to count and verify redirection rules
 
-How to use
+## How to use
 
+To run:
 ```sh
-./test_redirect.sh
+node index.js tests/test2.jsonc
 ```
 
-How to add test cases
-
-1. Open test_redirect.sh
-2. Add a line in this format: `"source expected"`, where
-   1. The whole line is enclosed in double quotes
-   2. `source` is a fully qualified URL
-   3. `expected` is the expected final redirection, can be a partial path
-   4. eg:
-    `"https://www.executivecentre.com/campaign https://www.executivecentre.com/"`
-    `"https://www.executivecentre.com/bespoke/ /enterprise-solutions-serviced-office/"`
+To save frequent tests and run:
+```sh
+./run_test2.sh
+```
 
 
+## How to add test cases
+
+1. Clone tests/test2.jsonc
+2. Edit the JSON file
+3. Run `node index.js` with this new file
+
+
+## Switches
+
+```
+node index.js -h               
+Usage: index [options] [filename]
+
+Options:
+  -V, --version                    output the version number
+  --log-fetch                      output fetch and redirect logs
+  -f, --fail-report                Generate failure reports
+  -s, --force-https                Use https:// even if the test case Requires http://
+  -j, --json-only                  Only generate result in JSON format. Skips generating human-readable report
+  -c, --child-sites-count <count>  (Default: 3) Number of random child sites to test. (default: "3")
+  -h, --help                       display help for command
+
+```

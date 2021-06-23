@@ -13,6 +13,10 @@
         //     "expect": "%CHILD_SITE%/contact-us/",
         // },
         {
+            "input": "https://www.executivecentre.com.cn/sitemap_index.xml",
+            "expect": "https://www.executivecentre.com.cn/sitemap.xml"
+        },
+        {
             "input": "https://www.executivecentre.com/contact_us",
             "expect": "https://www.executivecentre.com/contact-us/"
         },
@@ -26,89 +30,85 @@
         },
         {
             "input": "https://www.executivecentre.com/blog-article/celebrating-one-year-of-tec-community-2/",
-            "expect": "/blog-article/celebrating-one-year-of-tec-community/"
+            "expect": "https://www.executivecentre.com/blog-article/celebrating-one-year-of-tec-community/"
         },
         {
             "input": "https://www.executivecentre.com/blog-article/tec-blog/",
-            "expect": "/blog-article/global-member-network-the-future-of-work/"
+            "expect": "https://www.executivecentre.com/blog-article/global-member-network-the-future-of-work/"
         },
-        // {
-        //     "input": "https://www.executivecentre.com/city/*",
-        //     "expect": "https://www.executivecentre.com/locations/*",
-        // },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/city/*",
             "input": "https://www.executivecentre.com/city/hong-kong",
             "expect": "https://www.executivecentre.com/locations/hong-kong/"
         },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/city/*",
             "input": "https://www.executivecentre.com/city/sydney",
             "expect": "https://www.executivecentre.com/locations/sydney/"
         },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/city/*",
             "input": "https://www.executivecentre.com/city/australia",
             "expect": "https://www.executivecentre.com/locations/?market=australia"
         },
-        // {
-        //     "input": "https://www.executivecentre.com/news/*",
-        //     "expect": "https://www.executivecentre.com/press-and-media/",
-        // },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/news/*",
             "input": "https://www.executivecentre.com/news/the-executive-centre-expanding-in-china-market/",
             "expect": "https://www.executivecentre.com/press-and-media/"
         },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/news/*",
             "input": "https://www.executivecentre.com/news/enterprise-solutions-by-the-executive-centre-new-video-series-announces-landmark-product-evolution/",
             "expect": "https://www.executivecentre.com/press-and-media/"
         },
-        // {
-        //     "input": "https://www.executivecentre.com/conference_centre/*",
-        //     "expect": "https://www.executivecentre.com/meeting-rooms-conference/",
-        // },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/conference_centre/*",
             "input": "https://www.executivecentre.com/conference_centre/54d-eagle-street",
             "expect": "https://www.executivecentre.com/meeting-rooms-conference/"
         },
-        // {
-        //     "input": "https://www.executivecentre.com/serviced_offices/*",
-        //     "expect": "https://www.executivecentre.com/private-office/",
-        // },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/serviced_offices/*",
             "input": "https://www.executivecentre.com/serviced_offices/hong-kong",
             "expect": "https://www.executivecentre.com/private-office/"
         },
-        // {
-        //     "input": "https://www.executivecentre.com/centre-page/*",
-        //     "expect": "https://www.executivecentre.com/office-space/*",
-        // },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/centre-page/*",
             "input": "https://www.executivecentre.com/centre-page/hk-central-nexxus-building",
             "expect": "https://www.executivecentre.com/office-space/hk-central-nexxus-building/"
         },
-        // {
-        //     "input": "/shared_offices/*",
-        //     "expect": "https://www.executivecentre.com/",
-        // },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/shared_offices/*",
             "input": "https://www.executivecentre.com/shared_offices/virtual_offices/",
             "expect": "https://www.executivecentre.com/virtual-office/"
         },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/shared_offices/*",
             "input": "https://www.executivecentre.com/shared_offices/call_handling/",
             "expect": "https://www.executivecentre.com/virtual-office/"
         },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/shared_offices/*",
             "input": "https://www.executivecentre.com/shared_offices/whatever/",
             "expect": "https://www.executivecentre.com/"
         },
-        // {
-        //     "input": "https://www.executivecentre.com/id-id/*",
-        //     "expect": "https://www.executivecentre.com/en-id/*",
-        // },
         {
             "input": "https://www.executivecentre.com/id-id/",
             "expect": "https://www.executivecentre.com/en-id/"
         },
         {
+            // Pattern
+            "notes": "Pattern: https://www.executivecentre.com/id-id/*",
             "input": "https://www.executivecentre.com/id-id/coworking/",
             "expect": "https://www.executivecentre.com/en-id/coworking/"
         },
@@ -142,15 +142,7 @@
         },
         {
             "input": "https://www.executivecentre.com/office-space/hk-quarry-bay-one-island-east-lv60/",
-            "expect": "/office-space/hk-quarry-bay-one-island-east/"
-        },
-        {
-            "input": "https://www.executivecentre.com/meeting-room/60a-one-island-east-l60/",
-            "expect": "/office-space/hk-quarry-bay-one-island-east/"
-        },
-        {
-            "input": "https://www.executivecentre.com/meeting-room/60b-one-island-east-l60/",
-            "expect": "/office-space/hk-quarry-bay-one-island-east/"
+            "expect": "https://www.executivecentre.com/office-space/hk-quarry-bay-one-island-east/"
         },
         {
             "input": "https://www.executivecentre.com/virtual_offices/",
@@ -423,6 +415,51 @@
         {
             "input": "https://www.executivecentre.co.kr/post-sitemap.xml",
             "expect": "https://www.executivecentre.co.kr/sitemap.xml"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room page",
+            "input": "https://www.executivecentre.com/meeting-room/",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (sample)",
+            "input": "https://www.executivecentre.com/meeting-room/54a-eagle-street/",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (sample)",
+            "input": "http://www.executivecentre.com/meeting-room/12a-china-resources-building",
+            "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (cn sample)",
+            "input": "https://www.executivecentre.com.cn/meeting-room/54a-eagle-street",
+            "expect": "https://www.executivecentre.com.cn/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (cn sample)",
+            "input": "http://www.executivecentre.com.cn/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com.cn/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (en-jp sample)",
+            "input": "https://www.executivecentre.com/en-jp/meeting-room/54a-eagle-street/",
+            "expect": "https://www.executivecentre.com/en-jp/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (en-jp sample)",
+            "input": "http://www.executivecentre.com/en-jp/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com/en-jp/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (ja sample)",
+            "input": "http://www.executivecentre.com/ja-jp/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
+        },
+        {
+            "notes": "WEB20-761 Old Meeting room pages (sample)",
+            "input": "http://www.executivecentre.com/en-jp/meeting-room/12a-china-resources-building/",
+            "expect": "https://www.executivecentre.com/en-jp/meeting-rooms-conference/select-a-room/"
         }
     ]
 }
