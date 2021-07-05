@@ -15,61 +15,72 @@
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/09a-k11/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/09a-k11/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/09a-k11/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/12a-chong-hing-finance-center/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/12a-chong-hing-finance-center/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/12a-chong-hing-finance-center/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/18b-one-horizon-center/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/18b-one-horizon-center/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/18b-one-horizon-center/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/23a-5-corporate-avenue/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/23a-5-corporate-avenue/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/23a-5-corporate-avenue/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/23a-prosperity-tower/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/23a-prosperity-tower/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/23a-prosperity-tower/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/24a-three-international-towers/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/24a-three-international-towers/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/24a-three-international-towers/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/24d-three-international-towers/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/24d-three-international-towers/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/24d-three-international-towers/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/25a-corporate-avenue-centre/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/25a-corporate-avenue-centre/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/25a-corporate-avenue-centre/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/25b-5-corporate-avenue/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/25b-5-corporate-avenue/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/25b-5-corporate-avenue/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/en-jp/meeting-room/35a-2pp/",
-            "expect": "https://www.executivecentre.com/ja-jp/meeting-room/35a-2pp/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/35a-2pp/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
             "input": "https://www.executivecentre.com/ja-jp/ja-jp/meeting-room/13b-jingumae-tower-building/",
-            "expect": "https://www.executivecentre.com/ja-jp/ja-jp/meeting-room/13b-jingumae-tower-building/"
+            "expect_old": "https://www.executivecentre.com/ja-jp/meeting-room/13b-jingumae-tower-building/",
+            "expect": "https://www.executivecentre.com/ja-jp/meeting-rooms-conference/select-a-room/"
         },
         {
             "notes": "WEB20-749 (4) 301 redirections to the following wrong links that once existed on web",
-            "input": "https://www.executivecentre.com/meeting-rooms-conference/“/",
+            "input": "https://www.executivecentre.com/meeting-rooms-conference/%E2%80%9C/",
             "expect": "https://www.executivecentre.com/meeting-rooms-conference/"
         }
     ]
