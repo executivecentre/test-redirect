@@ -1,0 +1,414 @@
+{
+  "name": "Test 3",
+  "descriptions": "WP redirection plugin",
+  "tests": [
+    {
+      "input": "https://www.executivecentre.com/bespoke/",
+      "expect": "https://www.executivecentre.com/enterprise-solution/"
+    },
+    {
+      "input": "https://www.executivecentre.com/serviced_offices/",
+      "expect": "https://www.executivecentre.com/private-office/"
+    },
+    {
+      "input": "https://www.executivecentre.com/2018/10/05/new-ramaiah-tech-park-centre-launches-indias-tech-hub-bangalore/",
+      "expect": "https://www.executivecentre.com/ttps://www.executivecentre.com/2018/10/05/new-helios-business-park-centre-launches-indias-tech-hub-bangalore/"
+    },
+    {
+      "input": "https://www.executivecentre.com/business-continuity-planning-2/",
+      "expect": "https://www.executivecentre.com/business-continuity-planning/"
+    },
+    {
+      "input": "https://www.executivecentre.com/business-continuity-planning-3/",
+      "expect": "https://www.executivecentre.com/business-continuity-planning/"
+    },
+    {
+      "input": "https://www.executivecentre.com/about/privacy_policy/",
+      "expect": "https://www.executivecentre.com/privacy-policy/"
+    },
+    {
+      "input": "https://www.executivecentre.com/about/terms_and_conditions/",
+      "expect": "https://www.executivecentre.com/terms-and-conditions/"
+    },
+    {
+      "input": "https://www.executivecentre.com/shared_offices/boobooboo",
+      "expect": "https://www.executivecentre.com/"
+    },
+    {
+      "input": "https://www.executivecentre.com/shared_offices/boobooboo/foofoofoo",
+      "expect": "https://www.executivecentre.com/"
+    },
+    {
+      "input": "https://www.executivecentre.com/conference_centre/",
+      "expect": "https://www.executivecentre.com/meeting-rooms-conference/"
+    },
+    {
+      "input": "https://www.executivecentre.com/jakarta_sampoerna_strategic_square/",
+      "expect": "https://www.executivecentre.com/jakarta-sampoerna-strategic-square/"
+    },
+    {
+      "input": "https://www.executivecentre.com/city/",
+      "expect": "https://www.executivecentre.com/locations/"
+    },
+    {
+      "input": "https://www.executivecentre.com/locations/macau/virtual-offices-in-macau/",
+      "expect": "https://www.executivecentre.com/locations/macau-city/virtual-offices-in-macau/"
+    },
+    {
+      "input": "https://www.executivecentre.com/locations/macau/coworking-spaces-in-macau/",
+      "expect": "https://www.executivecentre.com/locations/macau-city/coworking-spaces-in-macau/"
+    },
+    {
+      "input": "https://www.executivecentre.com/locations/macau/meeting-conference-rooms-in-macau/",
+      "expect": "https://www.executivecentre.com/locations/macau-city/meeting-conference-rooms-in-macau/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/active-april-wellness-work-2/",
+      "expect": "https://www.executivecentre.com/blog-article/active-april-wellness-work/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/can-a-professional-certified-coach-help-your-business-2/",
+      "expect": "https://www.executivecentre.com/blog-article/can-a-professional-certified-coach-help-your-business/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/celebrating-one-year-of-tec-community-2/",
+      "expect": "https://www.executivecentre.com/blog-article/celebrating-one-year-of-tec-community/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/community-technology-new-ways-connect-2/",
+      "expect": "https://www.executivecentre.com/blog-article/community-technology-new-ways-connect/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/conversation-mark-devadason-cncf-2/",
+      "expect": "https://www.executivecentre.com/blog-article/conversation-mark-devadason-cncf/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/cultivating-communities-building-connections-2/",
+      "expect": "https://www.executivecentre.com/blog-article/cultivating-communities-building-connections/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/finding-focus-staying-motivated-2/",
+      "expect": "https://www.executivecentre.com/blog-article/finding-focus-staying-motivated/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/growing-centre-network-vietnam-introducing-saigon-centre-tower-one-2/",
+      "expect": "https://www.executivecentre.com/blog-article/growing-centre-network-vietnam-introducing-saigon-centre-tower-one/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/how-to-build-a-community-2/",
+      "expect": "https://www.executivecentre.com/blog-article/how-to-build-a-community/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/reasons-start-business-2/",
+      "expect": "https://www.executivecentre.com/blog-article/reasons-start-business/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/reflecting-2017-trends-defined-success-2/",
+      "expect": "https://www.executivecentre.com/blog-article/reflecting-2017-trends-defined-success/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/reflecting-2017-trends-defined-success-3/",
+      "expect": "https://www.executivecentre.com/blog-article/reflecting-2017-trends-defined-success/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/tec-blog/boo",
+      "expect": "https://www.executivecentre.com/blog-article/global-member-network-the-future-of-work/"
+    },
+    {
+      "input": "https://www.executivecentre.com/blog-article/working-flexibly-sydney-brisbane-perth-2/",
+      "expect": "https://www.executivecentre.com/blog-article/working-flexibly-sydney-brisbane-perth/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hk-central-one-ifc/",
+      "expect": "https://www.executivecentre.com/office-space/hk-central-one-ifc/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/akasaka_sanno_park_tower/",
+      "expect": "https://www.executivecentre.com/office-space/akasaka-sanno-park-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/beijing_china_resources_building/",
+      "expect": "https://www.executivecentre.com/office-space/beijing-china-resources-building/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/beijing_china_world_office_1/",
+      "expect": "https://www.executivecentre.com/office-space/beijing-china-world-office-1/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/beijing_china_world_office_2/",
+      "expect": "https://www.executivecentre.com/office-space/beijing-china-world-office-2/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/beijing_china_world_tower_b/",
+      "expect": "https://www.executivecentre.com/office-space/beijing-china-world-tower-b/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/beijing_financial_street_center/",
+      "expect": "https://www.executivecentre.com/office-space/beijing-financial-street-center/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/beijing_hyundai_motor_tower/",
+      "expect": "https://www.executivecentre.com/office-space/beijing-hyundai-motor-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/beijing_yintai_centre/",
+      "expect": "https://www.executivecentre.com/office-space/beijing-yintai-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/brisbane_one_one_one_eagle_street/",
+      "expect": "https://www.executivecentre.com/office-space/brisbane-one-one-one-eagle-street/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/chengdu_pingan_international_finance_centre/",
+      "expect": "https://www.executivecentre.com/office-space/chengdu-pingan-international-finance-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/chengdu_tower_2_raffles_city/",
+      "expect": "https://www.executivecentre.com/office-space/chengdu-tower-2-raffles-city/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/chennai_prestige_palladium_bayan/",
+      "expect": "https://www.executivecentre.com/office-space/chennai-prestige-palladium-bayan/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/chennai_tamarai_tech_park/",
+      "expect": "https://www.executivecentre.com/office-space/chennai-tamarai-tech-park/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/guangzhou_ctf_finance_centre/",
+      "expect": "https://www.executivecentre.com/office-space/guangzhou-ctf-finance-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/guangzhou_taikoo_hui/",
+      "expect": "https://www.executivecentre.com/office-space/guangzhou-taikoo-hui/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/gurgaon_dlf_cyber_city/",
+      "expect": "https://www.executivecentre.com/office-space/gurgaon-dlf-cyber-city/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/gurgaon_one_horizon_center/",
+      "expect": "https://www.executivecentre.com/office-space/gurgaon-one-horizon-center/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/gurgaon_two_horizon_center/",
+      "expect": "https://www.executivecentre.com/office-space/gurgaon-two-horizon-center/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hk_admiralty_28_hennessy_road/",
+      "expect": "https://www.executivecentre.com/office-space/hk-admiralty-28-hennessy-road/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hk_central_hong_kong_club_building/",
+      "expect": "https://www.executivecentre.com/office-space/hk-central-hong-kong-club-building/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hk_central_nexxus_building/",
+      "expect": "https://www.executivecentre.com/office-space/hk-central-nexxus-building/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hk_central_one_ifc/",
+      "expect": "https://www.executivecentre.com/office-space/hk-central-one-ifc/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hk_quarry_bay_cambridge_house/",
+      "expect": "https://www.executivecentre.com/office-space/hk-quarry-bay-cambridge-house/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hk_quarry_bay_one_island_east/",
+      "expect": "https://www.executivecentre.com/office-space/hk-quarry-bay-one-island-east/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/hongkong_two_chinachem_central/",
+      "expect": "https://www.executivecentre.com/office-space/hongkong-two-chinachem-central/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/jakarta_one_pacific_place/",
+      "expect": "https://www.executivecentre.com/office-space/jakarta-one-pacific-place/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/jakarta_sampoerna_strategic_square_lv30/",
+      "expect": "https://www.executivecentre.com/office-space/jakarta-sampoerna-strategic-square-lv30/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/macau_aia_tower/",
+      "expect": "https://www.executivecentre.com/office-space/macau-aia-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/marunouchi_shin_marunouchi_center_building/",
+      "expect": "https://www.executivecentre.com/office-space/marunouchi-shin-marunouchi-center-building/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/minato_roppongi_hills/",
+      "expect": "https://www.executivecentre.com/office-space/minato-roppongi-hills/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/mumbai_kalpataru_synergy/",
+      "expect": "https://www.executivecentre.com/office-space/mumbai-kalpataru-synergy/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/mumbai_the_capital/",
+      "expect": "https://www.executivecentre.com/office-space/mumbai-the-capital/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/seoul_gangnam_finance_center/",
+      "expect": "https://www.executivecentre.com/office-space/seoul-gangnam-finance-center/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/seoul_glass_tower/",
+      "expect": "https://www.executivecentre.com/office-space/seoul-glass-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/seoul_three_ifc/",
+      "expect": "https://www.executivecentre.com/office-space/seoul-three-ifc/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/seoul_seoul_finance_center/",
+      "expect": "https://www.executivecentre.com/office-space/seoul-seoul-finance-center/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/seoul_three_ifc/",
+      "expect": "https://www.executivecentre.com/office-space/seoul-three-ifc/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/seoul_two_international_finance_centre/",
+      "expect": "https://www.executivecentre.com/office-space/seoul-two-international-finance-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/seoul_two_international_finance_centre/",
+      "expect": "https://www.executivecentre.com/office-space/seoul-two-international-finance-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_5_corporate_avenue_lv25/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-5-corporate-avenue-lv25/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_5_corporate_avenue/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-5-corporate-avenue/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_bea_finance_tower/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-bea-finance-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_chong_hing_finance_center/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-chong-hing-finance-center/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_citic_square/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-citic-square/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_hkri_1/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-hkri-1/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_hkri_2/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-hkri-2/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_international_finance_center_lv36/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-international-finance-center-lv36/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_international_finance_center_lv8/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-international-finance-center-lv8/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_kwah_centre/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-kwah-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_mirae_asset/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-mirae-asset/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shanghai_the_center/",
+      "expect": "https://www.executivecentre.com/office-space/shanghai-the-center/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shenzhen_kerry_plaza_tower_2/",
+      "expect": "https://www.executivecentre.com/office-space/shenzhen-kerry-plaza-tower-2/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shenzhen_kerry_plaza_tower_3/",
+      "expect": "https://www.executivecentre.com/office-space/shenzhen-kerry-plaza-tower-3/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shenzhen_kerry_plaza_tower_one/",
+      "expect": "https://www.executivecentre.com/office-space/shenzhen-kerry-plaza-tower-one/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/shenzhen_taiping_finance_tower/",
+      "expect": "https://www.executivecentre.com/office-space/shenzhen-taiping-finance-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/singapore_marina_bay_financial_centre/",
+      "expect": "https://www.executivecentre.com/office-space/singapore-marina-bay-financial-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/singapore_ocean_financial_centre/",
+      "expect": "https://www.executivecentre.com/office-space/singapore-ocean-financial-centre/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/singapore_one_raffles_quay/",
+      "expect": "https://www.executivecentre.com/office-space/singapore-one-raffles-quay/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/singapore_six_battery_road/",
+      "expect": "https://www.executivecentre.com/office-space/singapore-six-battery-road/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/singapore_the_gateway_west/",
+      "expect": "https://www.executivecentre.com/office-space/singapore-the-gateway-west/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/sydney_1_bligh_street/",
+      "expect": "https://www.executivecentre.com/office-space/sydney-1-bligh-street/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/sydney_aurora_place/",
+      "expect": "https://www.executivecentre.com/office-space/sydney-aurora-place/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/sydney_australia_square/",
+      "expect": "https://www.executivecentre.com/office-space/sydney-australia-square/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/sydney_governor_phillip_tower/",
+      "expect": "https://www.executivecentre.com/office-space/sydney-governor-phillip-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/sydney_three_international_towers/",
+      "expect": "https://www.executivecentre.com/office-space/sydney-three-international-towers/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/taipei_far_eastern_plaza/",
+      "expect": "https://www.executivecentre.com/office-space/taipei-far-eastern-plaza/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/taipei_neihu_new_century_building/",
+      "expect": "https://www.executivecentre.com/office-space/taipei-neihu-new-century-building/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/taipei_taipei_101_lv57/",
+      "expect": "https://www.executivecentre.com/office-space/taipei-taipei-101-lv57/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/taipei_taipei_101/",
+      "expect": "https://www.executivecentre.com/office-space/taipei-taipei-101/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/tianjin_innovative_financial_building/",
+      "expect": "https://www.executivecentre.com/office-space/tianjin-innovative-financial-building/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/tianjin_teda_msd_c1_tower/",
+      "expect": "https://www.executivecentre.com/office-space/tianjin-teda-msd-c1-tower/"
+    },
+    {
+      "input": "https://www.executivecentre.com/centre-page/tianjin_the_exchange_tower_2/",
+      "expect": "https://www.executivecentre.com/office-space/tianjin-the-exchange-tower-2/"
+    }
+  ]
+}
