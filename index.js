@@ -144,7 +144,8 @@ program.action(async (_filename, options) => {
         if (trial >= 20) result.timeout = true;
 
         console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Failed timeout' : 'Failed'} (${result.hops.length} Hop${result.hops.length > 1 ? 's' : ''})`);
-        if (logFetch) console.log('');
+        if (!result.pass) console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Failed timeout' : 'Failed'} (${result.hops.length} Hop${result.hops.length > 1 ? 's' : ''})`);
+        if (logFetch) console.log(`  failed: ${input}`);
         resultList.push(result);
     }
     const dateString = getDateForFileName(new Date());
