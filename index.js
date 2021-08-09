@@ -50,22 +50,6 @@ program.action(async (_filename, options) => {
 
     console.log('Test count: %s', tests.length);
 
-    // const addresses = await new Promise((resolve, reject) => {
-    //     nslookup('www.executivecentre.com')
-    //         // .server('8.8.8.8') // default is 8.8.8.8
-    //         // .type('mx') // default is 'a'
-    //         // .timeout(10 * 1000) // default is 3 * 1000 ms
-    //         .end(function (err, addresses) {
-    //             if (err) {
-    //                 reject(err);
-    //             }
-    //             resolve(addresses); // => ['66.6.44.4']
-    //         });
-    // });
-
-    // const icmpObj = await ICMP.ping('www.executivecentre.com', 3 * 1000);
-    // console.log('Addresses:\n', icmpObj);
-
     const ip = (await dns.lookup('www.executivecentre.com'))?.address;
     console.log('ip address: ' + ip);
 
@@ -81,7 +65,7 @@ program.action(async (_filename, options) => {
             // expectStrictHostName = false,
 
             // treats "https://www.executivecentre.com/en-au/private-office/?repeat=w3tc" and "https://www.executivecentre.com/en-au/private-office/" to be the same
-            expectStrictQueryString = false,
+            expectStrictQueryString,
         } = test;
 
         const result = {
@@ -91,12 +75,15 @@ program.action(async (_filename, options) => {
             notes,
             // expectStrictHostName,
             expectStrictQueryString,
+            checkQueryString: false,
             hops: [],
             pass: false,
             timeout: false,
             error: '',
         };
 
+        const checkQueryString = expectStrictQueryString ?? (expect.includes('?'));
+        result.checkQueryString = checkQueryString;
 
         let resp;
         let url = input;
@@ -112,10 +99,10 @@ program.action(async (_filename, options) => {
             let testUrl = url;
             let expectUrl = expect;
 
-            if (!expectStrictQueryString) {
+            if (!checkQueryString) {
                 testUrl = testUrl.split('?')[0];
             }
-            if (!expectStrictQueryString) {
+            if (!checkQueryString) {
                 expectUrl = expectUrl.split('?')[0];
             }
             result.pass = (testUrl === expectUrl);
@@ -224,7 +211,8 @@ function generateReport(resultList, options) {
             expect,
             notes,
             // expectStrictHostName,
-            expectStrictQueryString,
+            // expectStrictQueryString,
+            checkQueryString,
             hops,
             pass,
             timeout,
@@ -232,7 +220,7 @@ function generateReport(resultList, options) {
         } = line;
         const flags = [
             // expectStrictHostName ? 'expectStrictHostName' : '',
-            expectStrictQueryString ? 'expectStrictQueryString' : '',
+            checkQueryString ? 'checkQueryString' : '',
             forceHttps ? 'forceHttps' : '',
         ].filter(line => line);
         return [
