@@ -7,6 +7,58 @@
       "expect": "https://www.executivecentre.com/enterprise-solution/"
     },
     {
+      "input": "https://www.executivecentre.com/coworking/china/hong-kong/",
+      "expect": "https://www.executivecentre.com/coworking/coworking-signup/?city=hong-kong"
+    },
+    {
+      "input": "https://www.executivecentre.com/coworking/china/hong-kong",
+      "expect": "https://www.executivecentre.com/coworking/coworking-signup/?city=hong-kong"
+    },
+    {
+      "input": "https://www.executivecentre.com/coworking/china/",
+      "expect": "https://www.executivecentre.com/coworking/coworking-signup/?market=china"
+    },
+    {
+      "input": "https://www.executivecentre.com/coworking/china",
+      "expect": "https://www.executivecentre.com/coworking/coworking-signup/?market=china"
+    },
+    {
+      "input": "https://www.executivecentre.com/coworking/whatever",
+      "expect": "https://www.executivecentre.com/coworking/coworking-signup/?market=whatever"
+    },
+    {
+      "input": "https://www.executivecentre.com/virtual-office/china/hong-kong/",
+      "expect": "https://www.executivecentre.com/virtual-office/virtual-office-signup/?city=hong-kong"
+    },
+    {
+      "input": "https://www.executivecentre.com/virtual-office/china/hong-kong",
+      "expect": "https://www.executivecentre.com/virtual-office/virtual-office-signup/?city=hong-kong"
+    },
+    {
+      "input": "https://www.executivecentre.com/virtual-office/china/",
+      "expect": "https://www.executivecentre.com/virtual-office/virtual-office-signup/?market=china"
+    },
+    {
+      "input": "https://www.executivecentre.com/virtual-office/china",
+      "expect": "https://www.executivecentre.com/virtual-office/virtual-office-signup/?market=china"
+    },
+    {
+      "input": "https://www.executivecentre.com/meeting-rooms-conference/china/hong-kong/",
+      "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/?city=hong-kong"
+    },
+    {
+      "input": "https://www.executivecentre.com/meeting-rooms-conference/china/hong-kong",
+      "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/?city=hong-kong"
+    },
+    {
+      "input": "https://www.executivecentre.com/meeting-rooms-conference/china/",
+      "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/?market=china"
+    },
+    {
+      "input": "https://www.executivecentre.com/meeting-rooms-conference/china",
+      "expect": "https://www.executivecentre.com/meeting-rooms-conference/select-a-room/?market=china"
+    },
+    {
       "input": "https://www.executivecentre.com/serviced_offices/",
       "expect": "https://www.executivecentre.com/private-office/"
     },

@@ -51,6 +51,7 @@
         {
             // Pattern
             "notes": "Pattern: https://www.executivecentre.com/city/*",
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/city/australia",
             "expect": "https://www.executivecentre.com/locations/?market=australia"
         },
@@ -245,10 +246,12 @@
             "expect": "https://www.executivecentre.com/contact-us/"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com?contact-us",
             "expect": "https://www.executivecentre.com/contact-us/?contact-us"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/?contact-us",
             "expect": "https://www.executivecentre.com/contact-us/?contact-us"
         },
@@ -289,46 +292,57 @@
             "expect": "https://www.executivecentre.com/event-space-venue/"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/australia/",
             "expect": "https://www.executivecentre.com/locations/?market=australia"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/china/",
             "expect": "https://www.executivecentre.com/locations/?market=china"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/india/",
             "expect": "https://www.executivecentre.com/locations/?market=india"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/indonesia/",
             "expect": "https://www.executivecentre.com/locations/?market=indonesia"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/japan/",
             "expect": "https://www.executivecentre.com/locations/?market=japan"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/philippines/",
             "expect": "https://www.executivecentre.com/locations/?market=philippines"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/singapore/",
             "expect": "https://www.executivecentre.com/locations/?market=singapore"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/south-korea/",
             "expect": "https://www.executivecentre.com/locations/?market=south-korea"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/sri-lanka/",
             "expect": "https://www.executivecentre.com/locations/?market=sri-lanka"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/uae/",
             "expect": "https://www.executivecentre.com/locations/?market=uae"
         },
         {
+            "expectStrictQueryString": true,
             "input": "https://www.executivecentre.com/locations/vietnam/",
             "expect": "https://www.executivecentre.com/locations/?market=vietnam"
         },
