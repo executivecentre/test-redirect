@@ -54,6 +54,23 @@ program.action(async (_filename, options) => {
     console.log('ip address: ' + ip);
 
     const resultList = [];
+    const result = {
+        summary: {
+            name,
+            filename,
+            descriptions,
+            dateString: '',
+            options,
+            ip,
+            total: 0,
+            passed: 0,
+            oneHops: 0,
+        },
+        results: [],
+        fails: [],
+    };
+
+
     let index = 0;
     for (const test of tests) {
         const {
@@ -68,7 +85,7 @@ program.action(async (_filename, options) => {
             expectStrictQueryString,
         } = test;
 
-        const result = {
+        const caseResult = {
             index: ++index,
             input,
             expect,
@@ -83,7 +100,7 @@ program.action(async (_filename, options) => {
         };
 
         const checkQueryString = expectStrictQueryString ?? (expect.includes('?'));
-        result.checkQueryString = checkQueryString;
+        caseResult.checkQueryString = checkQueryString;
 
         let resp;
         let url = input;
@@ -105,7 +122,7 @@ program.action(async (_filename, options) => {
             if (!checkQueryString) {
                 expectUrl = expectUrl.split('?')[0];
             }
-            result.pass = (testUrl === expectUrl);
+            caseResult.pass = (testUrl === expectUrl);
 
 
             if (logFetch) console.log(`fetch ${url}`);
@@ -116,41 +133,125 @@ program.action(async (_filename, options) => {
                 url = resp.headers.get('location');
                 if (url) {
                     if (logFetch) console.log('redirected');
-                    result.hops.push(url);
+                    caseResult.hops.push(url);
                 } else {
                     url = '';
                 }
             } catch (e) {
                 console.warn('Error', e);
-                result.error = '' + e;
+                caseResult.error = '' + e;
                 url = '';
             }
             await waitForMs(10);
         } while (url !== '' && trial < 20);
 
-        if (trial >= 20) result.timeout = true;
+        if (trial >= 20) caseResult.timeout = true;
 
-        console.log(`${result.index}. ${result.pass ? 'OK' : result.timeout ? 'Failed timeout' : 'Failed'} (${result.hops.length} Hop${result.hops.length > 1 ? 's' : ''})`);
-        if (!result.pass) console.log(`  failed: ${input}`);
-        resultList.push(result);
+        console.log(`${caseResult.index}. ${caseResult.pass ? 'OK' : caseResult.timeout ? 'Failed (timeout)' : 'Failed'} (${caseResult.hops.length} Hop${caseResult.hops.length > 1 ? 's' : ''})`);
+        if (!caseResult.pass) console.log(`  failed: ${input}`);
+        result.results.push(caseResult);
     }
-    const dateString = getDateForFileName(new Date());
+    result.summary.dateString = getDateForFileName(new Date());
 
-    const passed = resultList.filter(result => result.pass).length;
-    const oneHops = resultList.filter(result => result.pass && result.hops.length <= 1).length;
-    const total = resultList.length;
+    result.summary.passed = result.results.filter(result => result.pass).length;
+    result.summary.oneHops = result.results.filter(result => result.pass && result.hops.length <= 1).length;
+    result.summary.total = result.results.length;
+    result.fails = resultList.filter(result => !result.pass);
 
-    const resultHeaderJSON = {
-        name,
-        filename,
-        descriptions,
-        dateString,
-        options,
-        ip,
-        total,
-        passed,
-        oneHops,
-    };
+    const resultHeader = getResultHeader(result);
+    console.log(
+        `=======================================\n` +
+        `\n` +
+        `${resultHeader}\n` +
+        'Done'
+    );
+
+    if (!jsonOnly) await reportResultAsFile(result);
+    reportResultAsJson(result);
+
+    if (failReport) {
+        if (!jsonOnly) reportFailsAsFile(result);
+    }
+
+});
+
+program.parse(process.argv);
+
+
+async function reportResultAsFile(result) {
+    const {
+        summary: {
+            name,
+            filename,
+            descriptions,
+            dateString,
+            options,
+            ip,
+            total,
+            passed,
+            oneHops,
+        },
+        results,
+        fails,
+    } = result;
+
+    const resultHeader = getResultHeader(result);
+    const resultString = `${resultHeader}\n` +
+        `=======================================\n` +
+        `\n` +
+        generateReport(results, options) + `\n`;
+    await writeToNewFile(`./output/redirect_result_${dateString}.txt`, resultString);
+}
+
+async function reportResultAsJson(result) {
+    writeToNewFile(
+        `./output/redirect_result_${result.summary.dateString}.json`,
+        JSON.stringify(result, null, 4)
+    );
+}
+
+async function reportFailsAsFile(result) {
+    const {
+        summary: {
+            name,
+            filename,
+            descriptions,
+            dateString,
+            options,
+            ip,
+            total,
+            passed,
+            oneHops,
+        },
+        results,
+        fails,
+    } = result;
+
+    const resultHeader = getResultHeader(result);
+    const failureString = `${resultHeader}\n` +
+        `=======================================\n` +
+        `\n` +
+        generateReport(fails, options) + `\n`;
+
+    await writeToNewFile(`./output/redirect_result_${dateString}_failed.txt`, failureString);
+}
+
+function getResultHeader(result) {
+    const {
+        summary: {
+            name,
+            filename,
+            descriptions,
+            dateString,
+            options,
+            ip,
+            total,
+            passed,
+            oneHops,
+        },
+        results,
+        fails,
+    } = result;
 
     const resultHeader = `${name}\n` +
         `File name: ${filename}\n` +
@@ -163,44 +264,8 @@ program.action(async (_filename, options) => {
         `1-Hop-Pass: ${oneHops} / ${passed} (${passed <= 0 ? 0 : Math.floor(oneHops / passed * 100)}%)`
         ;
 
-
-    const resultString = `${resultHeader}\n` +
-        `=======================================\n` +
-        `\n` +
-        generateReport(resultList, options) + `\n`;
-
-    const failureList = resultList.filter(result => !result.pass);
-    const failureString = `${resultHeader}\n` +
-        `=======================================\n` +
-        `\n` +
-        generateReport(failureList, options) + `\n`;
-
-    console.log(
-        `=======================================\n` +
-        `\n` +
-        `${resultHeader}\n` +
-        'Done'
-    );
-
-    if (!jsonOnly) await writeToNewFile(`./output/redirect_result_${dateString}.txt`, resultString);
-    writeToNewFile(
-        `./output/redirect_result_${dateString}.json`,
-        JSON.stringify({ summary: resultHeaderJSON, result: resultList }, null, 4)
-    );
-
-    if (failReport && !jsonOnly) writeToNewFile(`./output/redirect_result_${dateString}_failed.txt`, failureString);
-    if (failReport) {
-        writeToNewFile(
-            `./output/redirect_result_${dateString}_failed.json`,
-            JSON.stringify({ summary: resultHeaderJSON, failed: failureList }, null, 4)
-        );
-    }
-
-});
-
-program.parse(process.argv);
-
-
+    return resultHeader;
+}
 
 function generateReport(resultList, options) {
     const { logFetch, failReport, forceHttps, childSitesCount } = options;
@@ -232,7 +297,7 @@ function generateReport(resultList, options) {
                 'Flags: ' + JSON.stringify(flags)
             ].filter(a => a).join(', '),
             error === '' ? null : error,
-            `${pass ? 'OK' : timeout ? 'Failed timeout' : 'Failed'} (${hops.length} Hop${hops.length > 1 ? 's' : ''})`,
+            `${pass ? 'OK' : timeout ? 'Failed (timeout)' : 'Failed'} (${hops.length} Hop${hops.length > 1 ? 's' : ''})`,
         ].filter(line => line != null).join('\n');
     })).join('\n\n');
 }
