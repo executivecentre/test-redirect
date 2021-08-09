@@ -17,8 +17,8 @@
             "expect": "https://www.executivecentre.com.cn/sitemap.xml"
         },
         {
-            "input": "https://www.executivecentre.com/contact_us",
-            "expect": "https://www.executivecentre.com/contact-us/"
+            "input": "https://%CHILD_SITE%/contact_us",
+            "expect": "https://%CHILD_SITE%/contact-us/"
         },
         {
             "input": "https://www.executivecentre.com/bespoke/",
@@ -39,8 +39,8 @@
         {
             // Pattern
             "notes": "Pattern: https://www.executivecentre.com/city/*",
-            "input": "https://www.executivecentre.com/city/hong-kong",
-            "expect": "https://www.executivecentre.com/locations/hong-kong/"
+            "input": "https://%CHILD_SITE%/city/hong-kong",
+            "expect": "https://%CHILD_SITE%/locations/hong-kong/"
         },
         {
             // Pattern
@@ -94,8 +94,8 @@
         {
             // Pattern
             "notes": "Pattern: https://www.executivecentre.com/shared_offices/*",
-            "input": "https://www.executivecentre.com/shared_offices/call_handling/",
-            "expect": "https://www.executivecentre.com/virtual-office/"
+            "input": "https://%CHILD_SITE%/shared_offices/call_handling/",
+            "expect": "https://%CHILD_SITE%/virtual-office/"
         },
         {
             // Pattern

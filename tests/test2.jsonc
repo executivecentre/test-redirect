@@ -10,6 +10,10 @@
         {
             "input": "https://www.executivecentre.com/bespoke/",
             "expect": "https://www.executivecentre.com/enterprise-solution/"
+        },
+        {
+            "input": "https://%CHILD_SITE%/bespoke/",
+            "expect": "https://%CHILD_SITE%/enterprise-solution/"
         }
     ]
 }

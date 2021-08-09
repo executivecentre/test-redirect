@@ -5,24 +5,16 @@ const nslookup = require('nslookup');
 const dns = require('dns').promises;
 // const ICMP = require('icmp');
 const { writeToNewFile, getDateForFileName, readFile } = require('./fileIO');
+const childSitePool = require('./childSitePool');
 // const { name, tests } = require('./tests/test1');
 
 const program = new Command();
 
 
 
-function waitForMs(ms) {
+function waitForTimeout(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
-const childSiteRegex = /a/;
-function getChildSite(url) {
-    const match = childSiteRegex.exec(url);
-    if (match == null) return '';
-
-    return '%CHILD_SITE%';
-}
-
 
 program
     .version('1.0.0')
@@ -48,10 +40,10 @@ program.action(async (_filename, options) => {
     const file = JSON.parse(testsString);
     const { name, descriptions, tests } = file;
 
-    console.log('Test count: %s', tests.length);
-
     const ip = (await dns.lookup('www.executivecentre.com'))?.address;
     console.log('ip address: ' + ip);
+
+    console.log('Test count: %s', tests.length);
 
     const resultList = [];
     const result = {
@@ -70,29 +62,78 @@ program.action(async (_filename, options) => {
         fails: [],
     };
 
+    // put an index to each case
+    for (let i = 0; i < tests.length; i++) {
+        const test = tests[i];
+        test.index = `${i + 1}`;
+    }
 
-    let index = 0;
+
+    const expandedTests = [];
+
+    // expand %CHILD_SITE% into full URL for each case
     for (const test of tests) {
         const {
+            index,
             input,
             expect,
             notes = '',
-
-            // // treats "https://www.executivecentre.com/en-au/private-office/" and "/en-au/private-office/" to be the same, but not "/private-office/"
-            // expectStrictHostName = false,
 
             // treats "https://www.executivecentre.com/en-au/private-office/?repeat=w3tc" and "https://www.executivecentre.com/en-au/private-office/" to be the same
             expectStrictQueryString,
         } = test;
 
-        const caseResult = {
-            index: ++index,
+        if (input.includes('%CHILD_SITE%') || expect.includes('%CHILD_SITE%')) {
+            if (!input.includes('%CHILD_SITE%')) {
+                const msg = `Case ${index}: \`input\` needs to have a matching %CHILD_SITE% wildcard. File: ${filename}`;
+                throw new Error();
+            }
+            if (!expect.includes('%CHILD_SITE%')) {
+                const msg = `Case ${index}: \`expect\` needs to have a matching %CHILD_SITE% wildcard. File: ${filename}`;
+                throw new Error();
+            }
+            const randomChildSites = getTestedChildSites(childSitePool, childSitesCount);
+            // url = url.replace(/%CHILD_SITE%/g, `%CHILD_SITE%`);
+            for (let i = 0; i < randomChildSites.length; i++) {
+                const randomChildSite = randomChildSites[i];
+                const { name: childSiteName, siteUrl } = randomChildSite;
+
+                expandedTests.push({
+                    ...test,
+                    index: `${test.index}.${i + 1}`,
+                    input: test.input.replace(/%CHILD_SITE%/ig, siteUrl),
+                    expect: test.expect.replace(/%CHILD_SITE%/ig, siteUrl),
+                    childSite: childSiteName,
+                });
+            }
+        } else {
+            expandedTests.push(test);
+        }
+    }
+
+    console.log('Expanded test count after %CHILD_SITE%: %s', expandedTests.length);
+
+
+    for (const test of expandedTests) {
+        const {
+            index,
             input,
             expect,
+            notes = '',
+
+            // treats "https://www.executivecentre.com/en-au/private-office/?repeat=w3tc" and "https://www.executivecentre.com/en-au/private-office/" to be the same
+            expectStrictQueryString,
+            childSite,
+        } = test;
+
+        const caseResult = {
+            index,
+            input, // `input` is read-only, the raw input from the test cases
+            expect, // `expect` is read-only, the raw expected output from the test cases
             notes,
-            // expectStrictHostName,
             expectStrictQueryString,
             checkQueryString: false,
+            childSite,
             hops: [],
             pass: false,
             timeout: false,
@@ -103,22 +144,20 @@ program.action(async (_filename, options) => {
         caseResult.checkQueryString = checkQueryString;
 
         let resp;
-        let url = input;
-        const childSite = getChildSite(url);
+        let url = input; // `url` is the actual url we use to make the request
         let trial = 0;
         do {
             trial++;
-            url = url.replace(/%CHILD_SITE%/g, `%CHILD_SITE%`);
             if (forceHttps) {
                 url = url.replace(/^http:\/\//, 'https://');
             }
 
-            let testUrl = url;
-            let expectUrl = expect;
-
+            let testUrl = url; // `testUrl` is the temporary url we use to white list some test case noises
             if (!checkQueryString) {
                 testUrl = testUrl.split('?')[0];
             }
+
+            let expectUrl = expect;// `expectUrl` is the temporary url we use to white list some test case noises
             if (!checkQueryString) {
                 expectUrl = expectUrl.split('?')[0];
             }
@@ -142,7 +181,7 @@ program.action(async (_filename, options) => {
                 caseResult.error = '' + e;
                 url = '';
             }
-            await waitForMs(10);
+            await waitForTimeout(10);
         } while (url !== '' && trial < 20);
 
         if (trial >= 20) caseResult.timeout = true;
@@ -158,11 +197,11 @@ program.action(async (_filename, options) => {
     result.summary.total = result.results.length;
     result.fails = resultList.filter(result => !result.pass);
 
-    const resultHeader = getResultHeader(result);
+    const resultSummary = getResultSummary(result);
     console.log(
         `=======================================\n` +
         `\n` +
-        `${resultHeader}\n` +
+        `${resultSummary}\n` +
         'Done'
     );
 
@@ -195,8 +234,8 @@ async function reportResultAsFile(result) {
         fails,
     } = result;
 
-    const resultHeader = getResultHeader(result);
-    const resultString = `${resultHeader}\n` +
+    const resultSummary = getResultSummary(result);
+    const resultString = `${resultSummary}\n` +
         `=======================================\n` +
         `\n` +
         generateReport(results, options) + `\n`;
@@ -227,8 +266,8 @@ async function reportFailsAsFile(result) {
         fails,
     } = result;
 
-    const resultHeader = getResultHeader(result);
-    const failureString = `${resultHeader}\n` +
+    const resultSummary = getResultSummary(result);
+    const failureString = `${resultSummary}\n` +
         `=======================================\n` +
         `\n` +
         generateReport(fails, options) + `\n`;
@@ -236,7 +275,7 @@ async function reportFailsAsFile(result) {
     await writeToNewFile(`./output/redirect_result_${dateString}_failed.txt`, failureString);
 }
 
-function getResultHeader(result) {
+function getResultSummary(result) {
     const {
         summary: {
             name,
@@ -253,7 +292,7 @@ function getResultHeader(result) {
         fails,
     } = result;
 
-    const resultHeader = `${name}\n` +
+    const resultSummary = `${name}\n` +
         `File name: ${filename}\n` +
         `Descriptions: ${descriptions}\n` +
         `Date: ${dateString}\n` +
@@ -264,7 +303,7 @@ function getResultHeader(result) {
         `1-Hop-Pass: ${oneHops} / ${passed} (${passed <= 0 ? 0 : Math.floor(oneHops / passed * 100)}%)`
         ;
 
-    return resultHeader;
+    return resultSummary;
 }
 
 function generateReport(resultList, options) {
@@ -275,18 +314,18 @@ function generateReport(resultList, options) {
             input,
             expect,
             notes,
-            // expectStrictHostName,
             // expectStrictQueryString,
             checkQueryString,
+            childSite,
             hops,
             pass,
             timeout,
             error,
         } = line;
         const flags = [
-            // expectStrictHostName ? 'expectStrictHostName' : '',
             checkQueryString ? 'checkQueryString' : '',
             forceHttps ? 'forceHttps' : '',
+            childSite ? `CHILD_SITE: ${childSite}` : '',
         ].filter(line => line);
         return [
             `${('' + (index) + '.').padEnd(6, ' ')}  ${input}`,
@@ -300,4 +339,19 @@ function generateReport(resultList, options) {
             `${pass ? 'OK' : timeout ? 'Failed (timeout)' : 'Failed'} (${hops.length} Hop${hops.length > 1 ? 's' : ''})`,
         ].filter(line => line != null).join('\n');
     })).join('\n\n');
+}
+
+
+
+function getTestedChildSites(childSitePool, count) {
+    const resultIDs = new Array(childSitePool.length).fill(1).map((_, i) => i);
+    const result = [];
+
+    for (let i = 0; i < count; i++) {
+        const randomID = Math.floor(Math.random() * resultIDs.length);
+
+        result.push(childSitePool[randomID]);
+        resultIDs.splice(randomID, 1);
+    }
+    return result;
 }

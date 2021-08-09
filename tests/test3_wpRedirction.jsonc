@@ -99,12 +99,12 @@
       "expect": "https://www.executivecentre.com/jakarta-sampoerna-strategic-square/"
     },
     {
-      "input": "https://www.executivecentre.com/city/",
-      "expect": "https://www.executivecentre.com/locations/"
+      "input": "https://%CHILD_SITE%/city/",
+      "expect": "https://%CHILD_SITE%/locations/"
     },
     {
-      "input": "https://www.executivecentre.com/locations/macau/virtual-offices-in-macau/",
-      "expect": "https://www.executivecentre.com/locations/macau-city/virtual-offices-in-macau/"
+      "input": "https://%CHILD_SITE%/locations/macau/virtual-offices-in-macau/",
+      "expect": "https://%CHILD_SITE%/locations/macau-city/virtual-offices-in-macau/"
     },
     {
       "input": "https://www.executivecentre.com/locations/macau/coworking-spaces-in-macau/",
@@ -351,12 +351,12 @@
       "expect": "https://www.executivecentre.com/office-space/shanghai-citic-square/"
     },
     {
-      "input": "https://www.executivecentre.com/centre-page/shanghai_hkri_1/",
-      "expect": "https://www.executivecentre.com/office-space/shanghai-hkri-1/"
+      "input": "https://%CHILD_SITE%/centre-page/shanghai_hkri_1/",
+      "expect": "https://%CHILD_SITE%/office-space/shanghai-hkri-1/"
     },
     {
-      "input": "https://www.executivecentre.com/centre-page/shanghai_hkri_2/",
-      "expect": "https://www.executivecentre.com/office-space/shanghai-hkri-2/"
+      "input": "https://%CHILD_SITE%/centre-page/shanghai_hkri_2/",
+      "expect": "https://%CHILD_SITE%/office-space/shanghai-hkri-2/"
     },
     {
       "input": "https://www.executivecentre.com/centre-page/shanghai_international_finance_center_lv36/",
